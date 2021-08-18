@@ -1,36 +1,30 @@
-import _ from 'lodash';
 import './style.css';
 
 const todoTasks = [
   {
     description: 'Have breakfast',
     completed: false,
-    index: 1
+    index: 1,
   },
   {
     description: 'go to college',
     completed: false,
-    index: 2
+    index: 2,
   },
   {
     description: 'meet my girlfriend',
     completed: false,
-    index: 3
-  }
+    index: 3,
+  },
 ];
 
-addTitle();
-addForm();
-addTodos();
-clearAll();
-
 function addTodos() {
-  for (let i = 0; i < todoTasks.length; i++) {
+  for (let i = 0; i < todoTasks.length; i += 1) {
     const ul = document.createElement('ul');
     ul.classList.add('todo-ctn');
     document.querySelector('.main-ctn').appendChild(ul);
 
-    let checkbox = document.createElement('input');
+    const checkbox = document.createElement('input');
     const desc = document.createElement('li');
     const dots = document.createElement('i');
     desc.innerText = `${todoTasks[i].description}`;
@@ -41,7 +35,7 @@ function addTodos() {
 
     ul.appendChild(checkbox);
     ul.appendChild(desc);
-    ul.appendChild(dots);  
+    ul.appendChild(dots);
   }
 }
 
@@ -71,3 +65,8 @@ function clearAll() {
   div.classList.add('clear-all');
   document.querySelector('.main-ctn').appendChild(div);
 }
+
+addTitle();
+addForm();
+addTodos();
+clearAll();

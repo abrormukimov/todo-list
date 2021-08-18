@@ -15,7 +15,7 @@ body {
   flex-direction: column;
   width: 600px;
   margin: 30px auto;
-  border: .1px solid white;
+  border: 0.1px solid white;
   box-shadow: 2px 2px 1px rgb(210, 207, 207);
   background-color: white;
 }
