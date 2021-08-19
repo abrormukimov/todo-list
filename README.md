@@ -1,6 +1,6 @@
 ![](https://img.shields.io/badge/Microverse-blueviolet)
 
-# Awesome books
+# Todo list
 
 > This is a JavaScript todo list project that allows users to add and remove todos.
 
