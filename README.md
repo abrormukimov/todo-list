@@ -4,7 +4,7 @@
 
 > This is a JavaScript todo list project that allows users to add and remove todos.
 
-![screenshot](./app_screenshot.png)
+![screenshot](./images/todo.png)
 
 Users can add todos by typing in the input field. This project also utilizes local storage which allows the todos data to be persistent even after the browser is shut down.
 
@@ -25,7 +25,7 @@ To get a local copy up and running follow these simple example steps.
     1. Press the green button "Code" and copy the link.
     2. Open terminal or Git Bash in a folder where you want to clone the repository.
     3. Type the command `git@github.com:abrormukimov/todo-list.git` and press "Enter"
-    4. Find the "index.html" file and double click on it to display the project.
+    4. Type `cd todo-list` and Run `npm start` to see the webpage.
 
 - Downloading zip file:
 

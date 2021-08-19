@@ -18,7 +18,7 @@ const todoTasks = [
   },
 ];
 
-function addTodos() {
+const addTodos = () => {
   for (let i = 0; i < todoTasks.length; i += 1) {
     const ul = document.createElement('ul');
     ul.classList.add('todo-ctn');
@@ -37,9 +37,9 @@ function addTodos() {
     ul.appendChild(desc);
     ul.appendChild(dots);
   }
-}
+};
 
-function addTitle() {
+const addTitle = () => {
   const titleCtn = document.createElement('div');
   titleCtn.classList.add('title-ctn');
   const title = document.createElement('h1');
@@ -47,9 +47,9 @@ function addTitle() {
   title.setAttribute('class', 'title');
   document.querySelector('.main-ctn').appendChild(titleCtn);
   titleCtn.appendChild(title);
-}
+};
 
-function addForm() {
+const addForm = () => {
   const form = document.createElement('form');
   const input = document.createElement('input');
   form.classList.add('form');
@@ -57,14 +57,14 @@ function addForm() {
   input.placeholder = 'Add to your list...';
   document.querySelector('.main-ctn').appendChild(form);
   form.appendChild(input);
-}
+};
 
-function clearAll() {
+const clearAll = () => {
   const div = document.createElement('div');
   div.innerText = 'Clear all completed';
   div.classList.add('clear-all');
   document.querySelector('.main-ctn').appendChild(div);
-}
+};
 
 addTitle();
 addForm();
