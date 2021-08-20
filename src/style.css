@@ -1,72 +1,81 @@
 * {
-  font-size: 22px;
-  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.cancel {
+  text-decoration: line-through;
+  color: rgb(182, 165, 165);
 }
 
 body {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-  background: rgb(249, 249, 249);
+  background-color: rgb(243, 241, 241);
 }
 
-.main-ctn {
-  display: flex;
-  flex-direction: column;
-  width: 600px;
-  margin: 30px auto;
-  border: 0.1px solid white;
-  box-shadow: 2px 2px 1px rgb(210, 207, 207);
-  background-color: white;
+.todo-body {
+  max-width: 450px;
+  background-color: #fff;
+  border: 1.5px solid rgb(206, 206, 206);
+  margin: auto;
+  margin-top: 6rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  box-shadow: 2px 5px 10px rgb(182, 165, 165);
 }
 
-.title-ctn {
-  display: flex;
-  justify-content: space-between;
+.top-text {
+  font-size: 1.3rem;
 }
 
-.title {
-  padding: 10px 20px;
-}
-
-.form {
+#task-form {
   display: flex;
   justify-content: space-between;
-  width: inherit;
+  width: 100%;
 }
 
-.input {
+.inpt {
   font-style: italic;
-  padding: 10px 20px;
-  width: inherit;
-  font-size: 17px;
+  color: rgb(182, 165, 165);
 }
 
-.todo-ctn {
+input {
+  font-size: 1rem;
+}
+
+#txt-input {
+  height: 2rem;
+  width: 50%;
+  outline: none;
+  border: none;
+}
+
+button {
+  background: none;
+  border: none;
+  color: rgb(128, 115, 115);
+}
+
+li {
+  border-bottom: 1.5px solid rgb(182, 165, 165);
   display: flex;
   justify-content: space-between;
+  height: 3rem;
   align-items: center;
-  padding: 10px 20px;
+  padding: 5px 12px;
 }
 
-.todo-ctn li {
-  flex: 24;
-  padding-left: 10px;
-  list-style-type: none;
+.ldiv-spn {
+  margin-right: 10px;
 }
 
-.todo-ctn input {
-  flex: 1;
-}
-
-.todo-ctn i {
-  flex: 0.5;
-  color: gray;
+.rdiv,
+.refresh {
+  color: rgb(182, 165, 165);
 }
 
 .clear-all {
+  height: 3rem;
   text-align: center;
-  background: rgb(237, 236, 236);
-  padding: 20px;
-  cursor: pointer;
+  padding-top: 1.5rem;
+  background-color: rgb(243, 241, 241);
+  color: rgb(128, 115, 115);
 }
