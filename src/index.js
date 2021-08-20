@@ -1,72 +1,84 @@
+import { taskNotComplete, taskCompleted } from './status.js';
 import './style.css';
 
-const todoTasks = [
-  {
-    description: 'Have breakfast',
+const form = document.querySelector('#task-form');
+const taskDescription = document.querySelector('#txt-input');
+
+const addToTasks = (e) => {
+  e.preventDefault();
+  // eslint-disable-next-line no-use-before-define
+  tasks.push({
+    description: taskDescription.value,
     completed: false,
     index: 1,
-  },
-  {
-    description: 'go to college',
-    completed: false,
-    index: 2,
-  },
-  {
-    description: 'meet my girlfriend',
-    completed: false,
-    index: 3,
-  },
-];
+  });
+  // eslint-disable-next-line no-use-before-define
+  addToLocalStorage();
+};
 
-const addTodos = () => {
-  for (let i = 0; i < todoTasks.length; i += 1) {
-    const ul = document.createElement('ul');
-    ul.classList.add('todo-ctn');
-    document.querySelector('.main-ctn').appendChild(ul);
+form.addEventListener('submit', addToTasks);
 
+const getFromLocalStorage = () => {
+  const storage = JSON.parse(localStorage.getItem('lstore')) || [];
+  return storage;
+};
+
+const tasks = getFromLocalStorage();
+
+const addToLocalStorage = () => {
+  const storage = JSON.stringify(tasks);
+  localStorage.setItem('lstore', storage);
+};
+
+const ul = document.querySelector('ul');
+
+const ui = () => {
+  for (let i = 0; i < tasks.length; i += 1) {
+    const li = document.createElement('li');
+    const lDiv = document.createElement('div');
+    lDiv.classList.add('ldiv');
+    const lDivSpan = document.createElement('span');
+    lDivSpan.classList.add('ldiv-spn');
+    const rDiv = document.createElement('div');
+    rDiv.classList.add('rdiv');
+    const pTask = document.createElement('span');
     const checkbox = document.createElement('input');
-    const desc = document.createElement('li');
-    const dots = document.createElement('i');
-    desc.innerText = `${todoTasks[i].description}`;
-
     checkbox.type = 'checkbox';
-    dots.classList.add('fas');
-    dots.classList.add('fa-ellipsis-v');
+    checkbox.name = 'task-box';
+    checkbox.value = `${tasks[i]}`;
+    checkbox.classList.add('chkbx');
 
-    ul.appendChild(checkbox);
-    ul.appendChild(desc);
-    ul.appendChild(dots);
+    li.appendChild(lDiv);
+
+    lDiv.appendChild(lDivSpan);
+    lDiv.appendChild(pTask);
+    lDivSpan.appendChild(checkbox);
+
+    li.appendChild(rDiv);
+    rDiv.innerHTML = '<i class="fas fa-bars"></i>';
+
+    ul.appendChild(li);
+
+    if (tasks[i].completed === true) {
+      pTask.innerText = `${tasks[i].description}`;
+      pTask.classList.add('cancel');
+      pTask.previousSibling.children[0].checked = true;
+    } else {
+      pTask.innerText = `${tasks[i].description}`;
+    }
+
+    checkbox.addEventListener('change', (e) => {
+      if (e.target.checked) {
+        taskCompleted(tasks[i]);
+        e.target.parentElement.nextSibling.classList.add('cancel');
+        addToLocalStorage();
+      } else {
+        taskNotComplete(tasks[i]);
+        e.target.parentElement.nextSibling.classList.remove('cancel');
+        addToLocalStorage();
+      }
+    });
   }
 };
 
-const addTitle = () => {
-  const titleCtn = document.createElement('div');
-  titleCtn.classList.add('title-ctn');
-  const title = document.createElement('h1');
-  title.innerText = "Today's todo list";
-  title.setAttribute('class', 'title');
-  document.querySelector('.main-ctn').appendChild(titleCtn);
-  titleCtn.appendChild(title);
-};
-
-const addForm = () => {
-  const form = document.createElement('form');
-  const input = document.createElement('input');
-  form.classList.add('form');
-  input.classList.add('input');
-  input.placeholder = 'Add to your list...';
-  document.querySelector('.main-ctn').appendChild(form);
-  form.appendChild(input);
-};
-
-const clearAll = () => {
-  const div = document.createElement('div');
-  div.innerText = 'Clear all completed';
-  div.classList.add('clear-all');
-  document.querySelector('.main-ctn').appendChild(div);
-};
-
-addTitle();
-addForm();
-addTodos();
-clearAll();
+ui();
